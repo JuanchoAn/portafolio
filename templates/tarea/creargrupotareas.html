@@ -65,18 +65,23 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{% url 'usuario:crear_usuario' %}">Crear usuario</a>
                                     <a class="nav-link" href="{% url 'usuario:listarUsuario' %}">listar usuario</a>
+                                    
                                 </nav>
                             </div>
                             {% endif %}
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                tareas
+                                Tareas
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{% url 'tarea:crear_tarea' %}">Crear tarea</a>
                                     <a class="nav-link" href="{% url 'tarea:listarTarea' %}">listar tareas</a>
+                                    <a class="nav-link" href="{% url 'tarea:listarFlujoTarea' %}">Listar flujos de tareas</a>
+                                    {% if request.user.is_staff %}
+                                    <a class="nav-link" href="{% url 'tarea:listarTareaAdmin' %}">listar todas las tareas</a>
+                                    {% endif %}
                                 </nav>
                             </div>
                             <a class="nav-link" href="charts.html">
@@ -133,11 +138,11 @@
 
                     <div class="form-group">
                         
-                        <button class="btn btn-primary" href="{% url 'index' %}" type="submit">Aceptar</button>
+                        <button class="btn btn-primary" href="{% url 'tarea:listarFlujoTarea' %}" type="submit">Aceptar</button>
                         
                     </div>
                     <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                        <a class="small" href="uninternas.html">Cancelar</a>
+                        <a class="btn btn-danger" href="{% url 'tarea:listarFlujoTarea' %}">Cancelar</a>
                     </div>
                     </form>
                     </div>

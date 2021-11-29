@@ -41,4 +41,11 @@ class CrearGrupotarea(models.Model):
 
     def __str__(self):
         return self.nombre_Grupo_tarea
+
+
+class rechazarTarea(models.Model):
+    id = models.AutoField(primary_key=True)
+    Tarea = models.ForeignKey(Creartarea, on_delete=models.CASCADE)
+    motivo = models.CharField(max_length=100, blank= False, null= True)
+
 # Create your models here.

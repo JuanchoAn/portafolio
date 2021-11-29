@@ -22,6 +22,7 @@ from apps.tarea.views import home
 from django.conf.urls import url
 from apps.usuario.views import Login, logoutUsuario
 # from apps.usuario.views import listarUsuario
+from apps.usuario.views import reportePdf
 
 urlpatterns = [
     path('home/', login_required(home), name='index'),
@@ -32,6 +33,7 @@ urlpatterns = [
     path('accounts/login/',Login.as_view(), name='login'),
     path('logout/',login_required(logoutUsuario), name='logout'),
     path('diseñador/', include(('apps.tarea.urls', 'diseñador'))),
+    path('reportePdf/', (reportePdf.as_view()), name='reportePdf'),
     url('', include('pwa.urls'))
     
 
